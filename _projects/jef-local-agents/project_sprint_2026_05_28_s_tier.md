@@ -63,7 +63,7 @@ For position-attribution after-the-fact: any vault `positions.json` entry with `
 
 ## User-side TODOs remaining
 
-- `git init ~/.claude/memory && git remote add origin <private repo>` to enable S5 memory sync
+- ~~`git init ~/.claude/memory` to enable memory sync~~ DONE 2026-05-28 (see Batch 5 — global repo + project memory via symlink, daemon bootstrapped + pushing).
 - Populate `<vault>/finance/subscriptions.yaml` + `<vault>/finance/domains.yaml`
 - iOS Shortcut for wake-audio (see runbook) — VLC URL scheme is the cleanest autoplay path
 - Push pending commit (now done, branch synced)
@@ -99,6 +99,16 @@ Known limitation: **`reddit_digest` is inert** — reddit returns HTTP 403 to th
 
 Pattern confirmed: idle_work is now extensible via its `TASKS` list and can host Ollama tasks (bounded by SIGALRM backstop inside the held lock). Good home for future "RAM-permitting" work (refactor scout was the canonical case). Total fleet ~40+ daemons after today's 3 batches (29 shipped 2026-05-28).
 
+## Batch 5 — consumption funnel + dashboard + calendar + memory infra (same session)
+
+After the 3 daemon batches, a cleanup/infra arc (all pushed, commits through `8ed04d0`):
+
+- **Consumption funnel** — Discord = ACT-NOW only. 10 FYI daemons (connect_ideas, pattern_detective, blind_spot_detector, random_idea_gen, reddit_digest, monthly_best_of, linkedin_draft, practice_potd, vault_hygiene, graph_audit) no longer ping; they surface via the dashboard **reports** tab (`/api/reports` in `script_runner/app.py`) + a "DAEMON REPORTS (last 24h)" rollup in `briefing.py` (`recent_reports_block()`). Recorded in CLAUDE.md "Key technical decisions". Rule for new daemons: ping only if actionable-now.
+- **Calendar TCC** — granted to the venv python via a one-shot launchd job; see [[calendar-tcc-launchd-grant]] for the responsible-process gotcha + the verify-via-launchd-kickstart trick.
+- **Memory sync (no 2nd repo)** — global `~/.claude/memory` is the git repo (user set up); jef-local-agents PROJECT memory is included by symlinking `~/.claude/projects/-Users-jef-jef-local-agents/memory` → `~/.claude/memory/_projects/jef-local-agents/` (real files in the one repo). `sync_memory.sh` loops `SYNC_DIRS` (currently just global); daemon `com.local.memory-sync` bootstrapped + verified pushing under launchd (09:15 daily). Original project dir kept as `…/memory.bak-20260528` until trusted.
+- **Memory prune** — merged 3 `scout_skip_*` → 1, deleted 2, graph_refresh (69 stubs / 227 backlinks). Saved [[feedback_separate_commits_per_daemon]].
+- **Roblox memory removed** — Air-origin `-Users-jeffreyzhang-…-roblox-speed-math` dir removed from the Mini AFTER salvaging 9 uncaptured reusable lessons (test-UID gate, debug-bridge persistence risk, team-create-vs-Rojo, Toolbox audio, leaderstats/badges/group perks, iPad `isCompactTouch` tier, scrapped-handwriting lesson) into `<vault>/code/projects/roblox-speed-math-patterns-2026-05-13.md`. Dir parked at `/tmp/roblox-mem-removed-20260528`.
+
 ## Memory recall trigger
 
-When sessions touch any of: daemon-health, secrets-scan hooks, LLM cost tracking, trading P&L attribution, today.\* iCloud pattern, "why did daemon_health flag X as stale", **launchd Discord daemon not pinging (→ load_dotenv before config import), or a SIGALRM-watchdog daemon crashing instead of exiting cleanly (→ \_Timeout must subclass TimeoutError)** — read this note first.
+When sessions touch any of: daemon-health, secrets-scan hooks, LLM cost tracking, trading P&L attribution, today.\* iCloud pattern, "why did daemon_health flag X as stale", **launchd Discord daemon not pinging (→ load_dotenv before config import), a SIGALRM-watchdog daemon crashing instead of exiting cleanly (→ \_Timeout must subclass TimeoutError), the consumption funnel / dashboard reports tab, a launchd daemon needing a macOS TCC grant (→ [[calendar-tcc-launchd-grant]]), or memory-sync / project-memory symlink** — read this note first.

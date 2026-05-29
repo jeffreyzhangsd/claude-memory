@@ -9,6 +9,30 @@ metadata:
 
 Updated nightly at 05:00 by `skill_tracker.py` on jef-local-agents. Rolling 7-day window; older entries dropped on each run.
 
+## 2026-05-29
+
+**Built:** Shipped significant updates to the local agent suite, including the weekly net-worth aggregator, monthly spending audit categorizer, and the YouTube URL to vault summary daemon.
+
+**Topics:**
+- daemon-architecture
+- memory-synchronization
+- calendar-event-kit
+- pattern-detection-algorithms
+- local-ai-agent-tooling
+
+**Artifacts:**
+1503ba3 docs(claude): add spending-audit + net-worth to the daemon table
+2c5b0d1 feat(net-worth): weekly net-worth aggregator daemon
+a2b4bb0 feat(spending-audit): monthly local statement categorizer daemon
+9038e76 feat(memory-sync): sync multiple dirs (global + jef-local-agents project memory)
+db15fe6 feat(briefing): roll up overnight daemon reports into the daily brief
+753fa3e feat(linkedin_draft): monthly LinkedIn bullet drafter from activity
+d37caae feat(blind_spot_detector): weekly vault coverage-gap finder
+ea79908 feat(pattern_detective): weekly cross-domain pattern-transfer proposer
+4239403 feat: stable today.{md,mp3,aiff} paths for iOS Shortcut consumption
+code/refactor/jef-local-agents-2026-05-29.md
+wiki/meta/decisions-2026-05-29.md
+
 ## 2026-05-28
 
 **Built:** The trading daemon and dashboard received significant feature parity updates, including a market clock banner, improved alert handling, and enhanced manual trading controls.
@@ -184,25 +208,3 @@ agent/quality_samples/2026-05-23-vault_harness.md
 code/scout/llm-orchestration.md
 code/scout/multi-agent-systems.md
 code/projects/roblox-speed-math-patterns-2026-05-13.md
-
-## 2026-05-22
-
-**Built:** Progressed the `wiki_builder` with numbered chapter TOCs and a root home redesign, and added `chat` and `remind` subcommands to the `jef` agent.
-
-**Topics:**
-- multi-agent-system-orchestration
-- agent-dispatch-protocol
-- wiki-content-generation
-- local-agent-tooling
-- data-pipeline-cleanup
-
-**Artifacts:**
-c0fbfc3 fix(wiki_builder)
-3d4d197 docs
-b688567 feat(wiki_ask)
-89e1f6f feat(jef)
-7533a80 feat(wiki_builder)
-6c2fddb feat(vault_janitor)
-2b2372e feat(dispatch)
-agent/dispatch/SCHEMA.md
-code/scout/llm-orchestration.md
