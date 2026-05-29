@@ -1,0 +1,208 @@
+---
+name: recent-activity
+description: Last 7 days of work — what Jeffrey was building/learning/touching across repos + vault. Auto-updated nightly by skill_tracker.py.
+metadata:
+  type: project
+---
+
+# Recent Activity (auto-tracked)
+
+Updated nightly at 05:00 by `skill_tracker.py` on jef-local-agents. Rolling 7-day window; older entries dropped on each run.
+
+## 2026-05-28
+
+**Built:** The trading daemon and dashboard received significant feature parity updates, including a market clock banner, improved alert handling, and enhanced manual trading controls.
+
+**Topics:**
+- trading-daemon-refactoring
+- dashboard-ui-enhancements
+- websocket-multiplayer-architecture
+- local-agent-orchestration
+- signal-processing-pipelines
+
+**Artifacts:**
+3b088b6 docs(IDEAS): mark #22 wiki-ask endpoint as shipped
+88417d5 docs(IDEAS): lock take-profit decision — bump 20% -> 25% (option 1)
+96f3082 docs(IDEAS): #24 Trading strategy v2 — predictive exits + manual re-invest
+ec0b87d feat(trading/daemon): richer Discord daily summary
+6461269 fix(trading): deadlock + watchdog + caches; 2h -> 1h scan cadence
+f369372 feat(repo_scout): velocity mode + safety filters (bot + adversarial)
+a461584 fix(trading/daemon): mark untradeable + execute-error signals processed
+7f9499e fix(trading/daemon): mark alerts + skips as processed so they don't re-trip
+55fda08 fix(dashboard/trading): auto-dismiss untradeable alerts
+d5b0abd fix(dashboard/trading): actionable list sorted by score+confidence, not mtime
+cdd7d95 feat(dashboard/trading): market clock banner (open/close countdown, PT)
+834cdca feat(trading): manual buys scale to model's suggested size
+a56e1c2 feat(dashboard/trading): alert clarity — explainer + conf pill + size hint
+e20460a feat(trading): sort positions, trim signals, split manual vs auto budget, vary confidence
+578d979 feat(dashboard/trading): position colors, column reorder, buy size dropdown, negative sign
+81241fe feat(dashboard/trading): clean account card — hero equity + colored P&L
+b994342 feat(dashboard/trading): clear alerts on buy + dismiss button
+32509e9 fix(dashboard/trading): mobile width + buy button reliability
+5264629 feat(dispatch): add 'trading' owner
+6804707 feat(dashboard): trading polish — env load, alerts card, mobile, size variety
+dfdabcf fix(trading): -v works after subcommand too
+code/projects/trading-patterns-2026-05-27.md
+
+## 2026-05-27
+
+**Built:** The core trading agent functionality was significantly progressed, adding the 'Trading' tab to the dashboard, implementing multiple data sources (13F, Form4, Congress), and building out the orchestration layer with `daemon.py` and `execute.py`.
+
+**Topics:**
+- trading-dashboard-architecture
+- financial-data-ingestion (13F, Form4, Congress)
+- daemon-orchestration-patterns
+- local-first-scoring-pipelines
+- launchd-plist-management
+
+**Artifacts:**
+5f6fdbb feat(dashboard): trading tab — positions, signals, regime, budget, equity
+10d7219 feat(trading): dashboard 'Trading' tab — 7 commands
+d5bcc5b feat(trading): launchd plists for scan / monitor / daily
+f9867ea feat(trading): __main__.py CLI
+0bfeea5 feat(trading): go_live.py — interactive paper→real confirmation gate
+e36c2e9 feat(trading): daemon.py — scan/monitor/daily orchestrators
+a969149 feat(trading): missed_runs.py — surface daemon gaps
+eb1d591 feat(trading): monitor.py — intraday sell-strategy + swing alerts
+9a99966 feat(trading): portfolio.py — account + positions snapshot
+64570d7 feat(trading): execute.py — Alpaca paper orders + budget + positions
+90680b2 feat(trading): analyze.py — local-first scorer with DeepSeek escalation
+8bb8a0f feat(trading): signals.py orchestrator — gate, dedup, price context
+9f77f3e feat(trading/sources): congress fetcher — SSW Senate + Finnhub House
+5a409f0 feat(trading/sources): 13F fetcher via edgartools (multi-CIK)
+5f6b67b feat(trading/sources): form4 insider-buy fetcher via edgartools
+45aab58 feat(trading): notify.py — Discord wrapper
+570e14c feat(trading): add deps, config keys, vault dirs
+65a4d53 feat(scripts): replay_missed_daemons — chronological re-fire after downtime
+5887f84 feat(launchd): auto-spawn 'main' tmux session at login
+5ab43a9 feat(launchd): tailscale watchdog plist — re-up if backend not Running
+33986af fix(briefing): snap glance email count + promote skill_log to own section
+
+## 2026-05-26
+
+**Built:** Updated the `jef-local-agents` to include snap glance email count and promoted `skill_log` to its own section.
+
+**Topics:**
+- vault-organization-structure
+- aim-training-benchmarking
+- markdown-templating
+- career-narrative-structuring
+
+**Artifacts:**
+33986af
+Career/Inbox/2026-05-26.md
+Career/Inbox/jds/2026-05-26-reddit-analytics-engineer.md
+Career/Inbox/jds/2026-05-26-spotify-data-engineer-wrapped-fixed-term.md
+Career/MaybeReview/2026-05-26.md
+ado.md
+agent/quality_samples/2026-05-26-vault_harness.md
+wiki/aim-training/meta/index.md
+wiki/aim-training/meta/log.md
+wiki/aim-training/sources/2026-05-26-aim-training-aim-trainer-benchmarks-kovaak-s-aim.md
+wiki/aim-training/sources/2026-05-26-aim-training-counter-strafing-stop-shooting-vs-running.md
+wiki/aim-training/sources/2026-05-26-aim-training-how-to-identify-your-specific-weakness.md
+wiki/home.md
+wiki/meta/decisions-2026-05-26.md
+
+## 2026-05-25
+
+**Built:** Progressed the autofill agent with support for cross-provider verification, React-Select scraping, and improved robustness for various field types. Also implemented persistent SSH tunneling for the Mini $\rightarrow$ Air Obsidian REST connection.
+
+**Topics:**
+autofill-field-scraping
+cross-provider-verification
+react-select-scraping
+ssh-tunneling-implementation
+message-bus-architecture
+
+**Artifacts:**
+6a1227c
+8d07bdb
+eafce9d
+423ea5d
+0236a0c
+19af394
+0ce8873
+64d84af
+96d9bdd
+47dfac9
+b89702f
+2a99ef8
+cadba54
+dea0293
+9e95f63
+f457afc
+d0568a4
+e644fc9
+d4cc659
+75b0b59
+87ef842
+agent/quality_samples/2026-05-25-vault_harness.md
+jef-folder/temp/session-handoff-2026-05-25.md
+wiki/meta/decisions-2026-05-25.md
+
+## 2026-05-24
+
+**Built:** The script_runner was updated with mobile layout fixes for career and run tabs, and new features were added to the career section, including mail triage, a Needs Review bucket, and batch autoapply functionality.
+
+**Topics:**
+- mobile-layout-fixes
+- script-runner-refactoring
+- career-workflow-enhancements
+- vault-data-structuring
+- dashboard-component-polish
+
+**Artifacts:**
+568a638
+9f71578
+6063572
+921a4f8
+adba9c7
+48dd093
+be92c9e
+Career/Inbox/2026-05-14.md
+agent/quality_samples/2026-05-24-vault_harness.md
+notes/career-email-triage.md
+wiki/golf/sources/2026-05-23-golf-iron-sets-blade-vs-cavity-back.md
+
+## 2026-05-23
+
+**Built:** The jef-local-agents dashboard was updated to include refresh-safe runs and new endpoints for /wiki-ask, /brief, /remind, and domain selection. The wiki_builder was also hardened with compound-AI classifier improvements.
+
+**Topics:**
+* jef-dashboard-development
+* compound-ai-classifier-hardening
+* luau-game-development
+* llm-orchestration
+* multi-agent-systems
+
+**Artifacts:**
+c3b5ad1 feat(script_runner): jef dashboard — refresh-safe runs, /wiki-ask, /brief, /remind, domain picker
+189eac0 feat(wiki_builder): compound-AI classifier hardening (Phase A+B+C+D)
+99bfa1c fix(wiki_builder): AGT-026 — H2-scan priority + positive examples in classifier prompt
+agent/quality_samples/2026-05-23-vault_harness.md
+code/scout/llm-orchestration.md
+code/scout/multi-agent-systems.md
+code/projects/roblox-speed-math-patterns-2026-05-13.md
+
+## 2026-05-22
+
+**Built:** Progressed the `wiki_builder` with numbered chapter TOCs and a root home redesign, and added `chat` and `remind` subcommands to the `jef` agent.
+
+**Topics:**
+- multi-agent-system-orchestration
+- agent-dispatch-protocol
+- wiki-content-generation
+- local-agent-tooling
+- data-pipeline-cleanup
+
+**Artifacts:**
+c0fbfc3 fix(wiki_builder)
+3d4d197 docs
+b688567 feat(wiki_ask)
+89e1f6f feat(jef)
+7533a80 feat(wiki_builder)
+6c2fddb feat(vault_janitor)
+2b2372e feat(dispatch)
+agent/dispatch/SCHEMA.md
+code/scout/llm-orchestration.md
