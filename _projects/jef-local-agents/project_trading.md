@@ -1,6 +1,6 @@
 ---
 name: project-trading
-description: "trading module — Form 4 + 13F + congressional signals, hermes-first scoring with DeepSeek escalation, Alpaca paper orders, dashboard tab + 3 launchd daemons. Shipped 2026-05-27."
+description: "trading module — Form 4 + 13F + congressional signals, LOCAL-ONLY hermes3:8b scoring (DeepSeek escalation removed 2026-05-29), Alpaca paper orders, dashboard tab + 3 launchd daemons. Shipped 2026-05-27."
 metadata:
   node_type: memory
   type: project
@@ -9,7 +9,7 @@ metadata:
 
 `~/jef-local-agents/trading/` — built end-to-end on 2026-05-27.
 
-**Architecture:** sources/{form4,funds,congress}.py → signals.py orchestrator (gate + dedup + price ctx) → analyze.py (hermes3:8b first, escalate to deepseek-reasoner on conf<0.7 / cluster≥3 / >6000 tok / local fail) → execute.py (alpaca-py notional market orders, ≤$50 auto-buy, $500/mo budget) → notify.py (Discord). monitor.py runs stop-loss/take-profit/swing every 30min. go_live.py is the only sanctioned paper→real flip.
+**Architecture:** sources/{form4,funds,congress}.py → signals.py orchestrator (gate + dedup + price ctx) → analyze.py (LOCAL-ONLY hermes3:8b; DeepSeek escalation removed 2026-05-29 per local-first mandate — local fail now yields an "error" verdict, never a buy) → execute.py (alpaca-py notional market orders, ≤$50 auto-buy, $500/mo budget) → notify.py (Discord). monitor.py runs stop-loss/take-profit/swing every 30min. go_live.py is the only sanctioned paper→real flip.
 
 **Daemons:** trading-signals (every 1h weekday PT 07:00–13:00 — tightened 2026-05-27 from 2h after caches + watchdogs landed), trading-monitor (every 30min), trading-daily (14:30 PT). missed_runs.py logs gaps + Discord-pings if gap overlapped NYSE hours.
 

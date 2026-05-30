@@ -9,6 +9,44 @@ metadata:
 
 Updated nightly at 05:00 by `skill_tracker.py` on jef-local-agents. Rolling 7-day window; older entries dropped on each run.
 
+## 2026-05-30
+
+**Built:** Progressed the dashboard with inline report summaries and per-card trading height adjustments, and implemented the personal CRM daemon with reconnect nudges and a birthday radar.
+
+**Topics:**
+- local-ai-agents-velocity
+- personal-crm-daemon
+- dashboard-layout-refinement
+- trading-fill-reconciliation
+- conversation-prep-briefing
+
+**Artifacts:**
+c52c8a7
+baae502
+17ddfe9
+41d8255
+f42cb8a
+a968199
+381e72d
+10da377
+c298c8b
+7a85659
+b885322
+e546d2c
+66c2a5a
+04c947e
+6f9c82d
+d0236c3
+77df824
+1dd1c76
+22c0bc2
+f780c36
+f16a928
+0f66862
+agent/anomalies/2026-05-29.md
+code/refactor/jef-local-agents-2026-05-30.md
+trading/daily/2026-05-29.md
+
 ## 2026-05-29
 
 **Built:** Shipped significant updates to the local agent suite, including the weekly net-worth aggregator, monthly spending audit categorizer, and the YouTube URL to vault summary daemon.
@@ -188,23 +226,3 @@ Career/Inbox/2026-05-14.md
 agent/quality_samples/2026-05-24-vault_harness.md
 notes/career-email-triage.md
 wiki/golf/sources/2026-05-23-golf-iron-sets-blade-vs-cavity-back.md
-
-## 2026-05-23
-
-**Built:** The jef-local-agents dashboard was updated to include refresh-safe runs and new endpoints for /wiki-ask, /brief, /remind, and domain selection. The wiki_builder was also hardened with compound-AI classifier improvements.
-
-**Topics:**
-* jef-dashboard-development
-* compound-ai-classifier-hardening
-* luau-game-development
-* llm-orchestration
-* multi-agent-systems
-
-**Artifacts:**
-c3b5ad1 feat(script_runner): jef dashboard — refresh-safe runs, /wiki-ask, /brief, /remind, domain picker
-189eac0 feat(wiki_builder): compound-AI classifier hardening (Phase A+B+C+D)
-99bfa1c fix(wiki_builder): AGT-026 — H2-scan priority + positive examples in classifier prompt
-agent/quality_samples/2026-05-23-vault_harness.md
-code/scout/llm-orchestration.md
-code/scout/multi-agent-systems.md
-code/projects/roblox-speed-math-patterns-2026-05-13.md

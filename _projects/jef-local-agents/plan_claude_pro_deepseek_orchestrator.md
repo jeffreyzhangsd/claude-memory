@@ -17,7 +17,7 @@ metadata:
 
 - When designing new pipelines or escalation paths: route heavy reasoning to DeepSeek v4-pro via API, NOT to Claude Opus/Sonnet
 - Existing "Cloud — Claude Sonnet/Opus" tier in CLAUDE.md architecture table is going to be partially displaced by DeepSeek v4-pro
-- Trading module already uses DeepSeek-reasoner escalation — pattern to copy for future modules
+- Trading is now LOCAL-ONLY (DeepSeek escalation removed 2026-05-29 — user wants all trading decisions local). The DeepSeek-call pattern now lives in the BUILD-TIME antagonist `utils/deepseek_review.py` ([[deepseek-v4-antagonist-pipeline]]), not in any runtime daemon. Copy that for future cloud-reasoning calls.
 - Don't bake assumptions about Max-tier Claude quota into new features
 - `DEEPSEEK_API_KEY` now in `.env` — confirm `config.py` has a slot/reader before any new module uses it
 

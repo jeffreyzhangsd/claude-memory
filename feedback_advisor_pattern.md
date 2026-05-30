@@ -6,6 +6,8 @@ type: feedback
 
 Match model to task. Default Sonnet 4.6 for routine implementation, refactors, plumbing, glue work. Reserve Opus 4.7 for tasks where reasoning depth materially helps the outcome.
 
+**In jef-local-agents the FIRST offload tier is DeepSeek, not a Claude subagent** — see [[feedback-deepseek-default-offload]]. Defer bounded self-contained text tasks to `utils/deepseek.py` (flash/pro) and verify; only reach for a Claude Haiku/Sonnet subagent when the task needs tools / repo access / file ops. The model-by-complexity rule below governs THAT subagent choice.
+
 **Why:** Token efficiency. Most coding work doesn't need Opus's depth — Sonnet handles it well. Opus is the consultant called in for hard calls, not the general contractor.
 
 **How to apply:** When dispatching a subagent via the Agent tool, set `model: "opus"` only when the task involves:

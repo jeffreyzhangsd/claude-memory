@@ -33,6 +33,8 @@
 
 ## Feedback (project-specific gotchas)
 
+- [Dashboard grid card collapse](dashboard_grid_card_collapse.md) — `.cards` grid collapses flex-column cards to first-child height; fix with `grid-auto-rows:max-content`. Verify dashboard CSS headless via Playwright before shipping.
+- [Default-offload to DeepSeek; Claude orchestrates + verifies](feedback_deepseek_default_offload.md) — Claude = thin orchestrator. Defer bounded self-contained text tasks to `utils/deepseek.py` (flash trivial / pro reasoning) by default + verify; Claude Haiku/Sonnet subagent only when tools/repo needed; Opus for hard calls. Token optimization on Pro. Said 2026-05-29.
 - [venv Python 3.12 → 3.14 drift](feedback_venv_python_version_drift.md) — `venv/bin/python3` = 3.14 but most requirements.txt packages live in 3.12 site-packages; reinstall into 3.14 on `ModuleNotFoundError`
 - [Separate commits per daemon](feedback_separate_commits_per_daemon.md) — when shipping a multi-daemon batch, one commit per logical daemon/group, not a mega-commit. Said 2026-05-28 after two 9–10-file mega-commits.
 - [Monetization: no-persona preference](monetization_no_persona_preference.md) — for side-hustle/income work, default to platform-marketplace products + capital plays. Skip newsletter/Discord/Substack/audience-build pitches.
